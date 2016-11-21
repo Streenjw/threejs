@@ -30,23 +30,23 @@ window.addEventListener("DOMContentLoaded", function(){
 	// set a camera
 	var aspect = width / height;
 	var camera = new THREE.PerspectiveCamera( viewAngle, aspect, near, far );
-	camera.position.z = 500;
+	camera.position.z = 400;
 	scene.add( camera );
 
 	// set a directional light
-	var directionalLight = new THREE.DirectionalLight( 0xffffff, 5 );
-	directionalLight.position.z = 3;
+	var directionalLight = new THREE.DirectionalLight( 0xffffff, 50 );
+	directionalLight.position.z = 2;
 	scene.add( directionalLight );
 
 	// cube geometry (200 x 200 x 200 and each segments) with textures;
-	var geometry = new THREE.CubeGeometry(200, 200, 200, 1, 1, 1,
+	var geometry = new THREE.CubeGeometry(250, 400, 250, 1, 1, 1,
 	[
 		new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('1.jpeg')}), // right
 		new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('2.jpeg')}), // left
-		new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('3.jpeg')}), // top
-		new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('4.jpeg')}), // bottom
-		new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('1.jpeg')}), // back
-		new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('1.jpeg')}), // front
+		new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('1.jpeg')}), // top
+		new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('1.jpeg')}), // bottom
+		new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('3.jpeg')}), // back
+		new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('4.jpeg')}), // front
 	]);
 
 	var material =  new THREE.MeshFaceMaterial();
@@ -56,10 +56,10 @@ window.addEventListener("DOMContentLoaded", function(){
 	renderer.render( scene, camera );
 
 	window.addEventListener('mousemove', function (e) {
-		var mouseX = ( e.clientX - width / 2 );
-		var mouseY = ( e.clientY - height / 2 );
-		cubeMesh.rotation.x = mouseY * 0.005;
-		cubeMesh.rotation.y = mouseX * 0.005;
+		var mouseX = ( e.clientX - width / 2.0 );
+		var mouseY = ( e.clientY - height / 2.0 );
+		cubeMesh.rotation.x = mouseY * 0.003;
+		cubeMesh.rotation.y = mouseX * 0.003;
 
 		renderer.render( scene, camera );
 	}, false);
